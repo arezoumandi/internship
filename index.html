@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h3>Email chech with RegExp </h3>
+            <input type="text" id="email1" name="email"><br><br>
+            <button onclick="emailCheck()">Check it</button>
+            <p id="result"></p>               
+        </div>
+        <div>
+            <h3>Sum of Array Numbers</h3>
+            <div id="sum"> 
+                <button onclick="numArray()">calculate</button>
+                <h4>Sort array</h4>
+                <p id="items">
+
+                </p>
+                <p id="sumItems">
+
+                </p>
+            </div>
+        </div>
+        <div>
+            <h3>UpperCase Array of names</h3>
+            <div> 
+                <button onclick="upperCase()">Uppee Case</button>
+                <p id="namesItems">
+
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <h3>Sort Array</h3>
+            <div> 
+                <p id="unSort">
+                    <h4>Unsort array</h4>
+                </p>
+                <button onclick="sortArray()">Sort</button>
+
+                <p id="sort">
+
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <h3>is empty</h3>
+            a: <input id="a" type="number" name="num">
+            <button onclick="isEmpty(document.getElementById('a').value)">chek empty value</button>
+        </div>
+
+        <div>
+            <h3>copy</h3>
+
+            <button onclick="copy()">copy</button>
+            <p id="deepCopy"></p>
+            
+        </div>
+    </div>
+
+
+    <script>
+        function emailCheck(){
+            let email=document.getElementById("email1").value;
+            console.log(email);
+            let pattern=/^\S+[a-zA-Z0-9]+@+[a-zA-Z]+\.+[a-zA-Z]/;
+            document.getElementById("result").innerHTML=pattern.test(email);
+        }
+
+
+        function numArray(){
+            let num=[10,20,30,40,7,459,];
+            let sum=0;
+            for (i=0;i<num.length;i++)
+            {
+                sum+=num[i]
+            }
+            for (i=0;i<num.length-1;i++){
+                document.getElementById("items").innerHTML+=num[i]+", ";
+            }
+            document.getElementById("items").innerHTML+=num[num.length-1];
+            document.getElementById("sumItems").innerHTML="sum of numbers ="+sum;
+        }
+
+        function upperCase(){
+            let names=["reza","ali","mina"];
+
+            for(i=0;i<names.length;i++){
+                names[i]=names[i].charAt(0).toUpperCase()+names[i].slice(1);
+                document.getElementById("namesItems").innerHTML+=names[i]+"<br>"
+            }
+        }
+
+        function sortArray(){          
+            let num=[10,5,45,2,36]
+            for (i=0;i<num.length-1;i++)
+            {                
+                document.getElementById("unSort").innerHTML+=num[i]+"<br>"
+            }     
+
+                for( i = 0; i < num.length; i++){
+
+                    for( j = 0; j < num.length - i - 1; j++){
+                        if(num[j + 1] < num[j]){
+
+                            [num[j + 1],num[j]] = [num[j],num[j + 1]]
+                        }
+                    }
+
+                }     
+                               
+            for (i=0;i<num.length-1;i++)
+            {
+                document.getElementById("sort").innerHTML+=num[i]+"<br>";
+            }
+        }
+
+        function isEmpty(a)
+        {
+          
+            console.log(a == null || a == '' || a==undefined);
+
+        }
+
+        function copy(){
+            const num=[1,2,3];
+            let newNum=Object.assign({},num);          
+            const propNum = Object.getOwnPropertyNames(newNum);
+            
+            document.getElementById("deepCopy").innerHTML+="Primary object before change: "+num+"<br>";
+            document.getElementById("deepCopy").innerHTML+="copy object: ";
+            for(i=0;i<propNum.length;i++)
+            {
+                document.getElementById("deepCopy").innerHTML+=+newNum[i] + ",";
+            }
+            num[0]=200;           
+         
+
+            document.getElementById("deepCopy").innerHTML+="<br>"+"Changed Primary object: "+num+"<br>";
+
+            document.getElementById("deepCopy").innerHTML+="copy object after change: ";
+
+
+            for(i=0;i<propNum.length;i++)
+            {
+                document.getElementById("deepCopy").innerHTML+=+newNum[i] + ",";
+            }
+
+
+
+        }
+    </script>
+</body>
+</html>
