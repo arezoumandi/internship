@@ -1,12 +1,16 @@
-function upperCase(){
-    let names=["Reza","ali","mina"];
-    console.log("Before Cahnge :"+names)
-
-    console.log("After Cahnge :");
-    for(i=0;i<names.length;i++){
-        names[i]=names[i].charAt(0).toUpperCase()+names[i].slice(1);
-        console.log(names[i]+"  ");
+function upperCase(names) {
+  let result = [];
+  for (i = 0; i < names.length; i++) {
+    if (typeof names[i] == "string") {
+      result[i] = names[i].charAt(0).toUpperCase() + names[i].slice(1);
+    } else {
+      result[i] = names[i];
     }
+  }
+  return result;
 }
 
-upperCase();
+console.log(upperCase(["reza", "ali"]));
+console.log(upperCase(["Reza", "ali", "marYam"]));
+console.log(upperCase([1, 2, 3]));
+console.log(upperCase(["ali",1,"reza"]));

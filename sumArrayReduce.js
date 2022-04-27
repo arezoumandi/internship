@@ -1,16 +1,11 @@
-function sum(arr)
-{   
-        let initialValue=0;
-            
-        var sum=arr.reduce(function(total,item){
-            return  total+item;
-        },initialValue)
+function sumArr(arr) {
+  let initialValue = 0;
 
-        console.log("sum:"+ sum);
-
+  var sum = arr.reduce(function (total, item) {
+    return total + item;
+  }, initialValue);
+  return sum;
 }
-
-
-sum([10,20,30,40,50])
-sum([])
-sum([10])
+console.log(sumArr([10, 20, 30, 40, 50]));
+console.log(sumArr([]));
+console.log(sumArr([10]));
