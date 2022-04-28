@@ -1,15 +1,25 @@
-function copy(arr) {
-  let newNum = Object.assign({}, arr);
-  const propNum = Object.getOwnPropertyNames(newNum);
-  console.log("Primary object before change: " + arr);
-  console.log("copy object: ");
-  console.log(newNum);
+function copy(obj1) {
 
-  arr[0] = 200;
-  console.log("Changed Primary object: " + arr);
-
-  console.log("copy object after change: ");
-  console.log(newNum);
+    obj2=JSON.parse( JSON.stringify(obj1));
+    return obj2;
 }
 
-copy();
+
+let a=[1,2,3];
+b=copy(a);
+a=[2,4,3];
+console.log(`copy object=${b}`);
+
+
+let c={name:"ali",
+      address:{
+        city:"qom",
+        st:"Attaran"
+      },
+
+};
+
+d=copy(c);
+c.address.city='Tehran';
+console.log(c);
+console.log(d);

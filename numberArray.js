@@ -1,14 +1,14 @@
-function numArray(){
-    let num=[10,20,30,40,7,459,];
-    let sum=0;
-    for (i=0;i<num.length;i++)
-    {
-        sum+=num[i];
-    }
-   
-    console.log(num);
-    console.log("sum of numbers ="+sum);
+function numArray(num) {
+  let sum = 0;
+  for (i = 0; i < num.length; i++) {
+      if (typeof num[i] == "number")
+      {
+          sum += num[i];
+      }
+  }
+  return sum;
 }
 
-
-numArray();
+console.log(numArray([1,2,10,20,30]));
+console.log(numArray([]));
+console.log(numArray(["ali","rezaa"]))
